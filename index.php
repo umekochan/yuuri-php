@@ -21,13 +21,21 @@
         <?php endif; ?>
     </header>
     <main>
-        <form action="login.php" method="post">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-            <label for="password">Password</label>
-            <input type="text" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
+        <?php if( isset($_SESSION['id']) ): ?>
+            <section class="login">
+                <a href="logout.php">Logout</a>
+            </section>
+        <?php else: ?>
+            <section class="logout">
+                <form action="login.php" method="post">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </section>
+        <?php endif; ?>
     </main>
 </body>
 </html>

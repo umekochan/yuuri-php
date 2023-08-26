@@ -1,4 +1,6 @@
 <?php
+    //セッションの開始
+    session_start();
 
     $name = $_POST['name'];
     $password = $_POST['password'];
@@ -46,8 +48,14 @@
 
     //パスワードが一致するか
     if ( $password === $result['password'] ) {
+
+        //セッションにログイン状態を保存
+        $_SESSION['id'] = $result['id'];
+        $_SESSION['name'] = $result['name'];
         echo '<p>ログインしました。</p>';
+
     } else {
         echo '<p>パスワードが間違っています。</p>';
     }
+    echo '<a href="index.php">TOPへ</a>';
 ?>
